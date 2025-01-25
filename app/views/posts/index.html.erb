@@ -1,0 +1,9 @@
+<h1>Posts</h1>
+
+<%= link_to "New Post", new_post_path %>
+
+<% if @posts.length > 0 %>
+  <%= render @posts %>
+<% else %>
+  <p>Aint shit here boss</p>
+<% end %>

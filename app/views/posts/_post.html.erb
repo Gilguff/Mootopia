@@ -1,0 +1,12 @@
+<div class="post" id="post-<%= post.id %>">
+  <h2><%= post.author.username %>: </h2>
+  <p><%= post.body %></p>
+  <p>Likes: <%= post.likings.count %></p>
+
+
+  <% if current_user.liked?(post) %>
+    <%= button_to 'Unlike', post_liking_path(post, current_user.likings.find_by(post: post)), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= button_to 'Like', post_likings_path(post), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+</div>
