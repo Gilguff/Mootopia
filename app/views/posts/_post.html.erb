@@ -9,4 +9,12 @@
   <% else %>
     <%= button_to 'Like', post_likings_path(post), method: :post, class: 'btn btn-primary' %>
   <% end %>
+
+</div>
+ 
+<div>
+  <h3>Comments</h3>
+  <%= render post.comments %>
+  <h3>Add a comment:</h3>
+  <%= render "comments/form", post: post %>
 </div>

@@ -6,4 +6,7 @@ class Post < ApplicationRecord
   # Likes
   has_many :likings, dependent: :destroy
   has_many :likers, through: :likings, source: :user
+
+  # Comments
+  has_many :comments, dependent: :destroy
 end

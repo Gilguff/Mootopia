@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy, foreign_key: "author_id"
+  has_many :comments, dependent: :destroy, foreign_key: "author_id"
 
 
   # User is following
