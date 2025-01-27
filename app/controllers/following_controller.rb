@@ -1,6 +1,9 @@
 class FollowingController < ApplicationController
   before_action :set_user
 
+  def index
+  end
+
   def create
     current_user.follow(@user)
     respond_to do |format|

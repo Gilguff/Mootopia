@@ -23,6 +23,11 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to "Feed", root_path %>
+      <%= link_to "Profile", user_profile_path(current_user) %>
+      <%= link_to "Log Out", destroy_user_session_path , data: { turbo_method: :delete }%>
+    <% end %>
     <%= yield %>
   </body>
 </html>

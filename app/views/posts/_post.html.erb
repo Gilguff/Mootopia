@@ -1,20 +1,32 @@
 <div class="post" id="post-<%= post.id %>">
-  <h2><%= post.author.username %>: </h2>
+  <h2><%= link_to post.author.username, user_profile_path(post.author) %>: </h2>
   <p><%= post.body %></p>
   <p>Likes: <%= post.likings.count %></p>
 
 
-  <% if current_user.liked?(post) %>
-    <%= button_to 'Unlike', post_liking_path(post, current_user.likings.find_by(post: post)), method: :delete, class: 'btn btn-danger' %>
+  <% if current_user == post.author %>
+    <%= link_to "Edit Post", edit_post_path(post) %>
+    <%= button_to "Delete", post, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   <% else %>
-    <%= button_to 'Like', post_likings_path(post), method: :post, class: 'btn btn-primary' %>
+    <% if current_user.liked?(post) %>
+      <%= button_to 'Unlike', post_liking_path(post, current_user.likings.find_by(post: post)), method: :delete %>
+    <% else %>
+      <%= button_to 'Like', post_likings_path(post), method: :post %>
+    <% end %>
   <% end %>
-
+  
 </div>
  
 <div>
   <h3>Comments</h3>
-  <%= render post.comments %>
+  <%# render post.comments %>
+  <% post.comments.each do |comment| %>
+    <%= render comment %>
+    <% if current_user == comment.author %>
+      <%= link_to "Edit", edit_post_comment_path(post, comment) %>
+      <%= button_to "Delete", post_comment_path(post, comment), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  <% end %>
   <h3>Add a comment:</h3>
   <%= render "comments/form", post: post %>
 </div>

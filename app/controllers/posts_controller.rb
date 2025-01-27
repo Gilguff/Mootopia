@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[ edit update destroy ]
+
   # update index when added follwers
   def index
     @posts = Post.all
@@ -21,8 +23,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to
+  end
+
   private
     def post_params
       params.expect(post: [ :body ])
+    end
+
+    def set_post
+      @post = Post.find(params[:id])
     end
 end

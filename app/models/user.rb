@@ -16,18 +16,6 @@ class User < ApplicationRecord
   has_many :passive_following, class_name: "following", foreign_key: "followee_id", dependent: :destroy
   has_many :followees, through: :passive_following
 
-  def follow(other_user)
-    following << other_user unless self == other_user
-  end
-
-  def unfollow(other_user)
-    following.delete(other_user)
-  end
-
-  def following?(other_user)
-    following.include?(other_user)
-  end
-
   # Likes
   has_many :likings, dependent: :destroy
   has_many :liked_posts, through: :likings, source: :post
@@ -43,4 +31,8 @@ class User < ApplicationRecord
   def liked?(post)
     liked_posts.include?(post)
   end
+
+  # Profile
+  has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile
 end

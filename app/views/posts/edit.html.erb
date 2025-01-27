@@ -1,6 +1,6 @@
-<p>New Post</p>
+<h1>Edit Post</h1>
 
-<%= form_with model: @post do |form| %>
+<%= form_with(model: @post, local: true) do |form| %>
   <div>
     <%= form.text_field :body %>
   </div>

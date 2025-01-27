@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 
   # user
   resources :users do
+    resource :profile, only: [ :show, :edit, :update ]
     member do
-      post "follow", to: "following#create"
-      delete "unfollow", to: "following#destroy"
+      post :follow
+      delete :unfollow
     end
   end
 
@@ -29,6 +30,6 @@ Rails.application.routes.draw do
   # post
   resources :posts do
     resources :likings, only: [ :create, :destroy ]
-    resources :comments, only: [ :create ]
+    resources :comments, only: %i[ create edit update destroy ]
   end
 end

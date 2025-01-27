@@ -1,0 +1,10 @@
+<h1><%= @user.username %></h1>
+
+<% if @profile.profile_picture.attached? %>
+  <%= image_tag @profile.profile_picture %>
+<% else %>
+  <%= image_tag "default-profile.png" %>
+<% end %>
+
+<p><%= @profile.bio.presence || "No Yapping To Be Seen Here." %></p>
+
