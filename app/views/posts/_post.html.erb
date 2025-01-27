@@ -1,20 +1,19 @@
 <div class="post" id="post-<%= post.id %>">
   <h2><%= link_to post.author.username, user_profile_path(post.author) %>: </h2>
   <p><%= post.body %></p>
-  <p>Likes: <%= post.likings.count %></p>
-
+  <div id="like-count-<%= post.id %>">
+    <%= render "posts/like_count", post: post %>
+  </div>
 
   <% if current_user == post.author %>
     <%= link_to "Edit Post", edit_post_path(post) %>
     <%= button_to "Delete", post, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   <% else %>
-    <% if current_user.liked?(post) %>
-      <%= button_to 'Unlike', post_liking_path(post, current_user.likings.find_by(post: post)), method: :delete %>
-    <% else %>
-      <%= button_to 'Like', post_likings_path(post), method: :post %>
-    <% end %>
+    <div id="like-button-<%= post.id %>">
+      <%= render "posts/like_button", post: post %>
+    </div>
   <% end %>
-  
+
 </div>
  
 <div>

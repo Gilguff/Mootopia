@@ -1,0 +1,2 @@
+<%= turbo_stream.replace "like-button-#{@post.id}", partial: "posts/like_button", locals: { post: @post } %>
+<%= turbo_stream.replace "like-count-#{@post.id}", partial: "posts/like_count", locals: { post: @post } %>

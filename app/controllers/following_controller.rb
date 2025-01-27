@@ -1,23 +1,14 @@
 class FollowingController < ApplicationController
   before_action :set_user
 
-  def index
-  end
-
   def create
     current_user.follow(@user)
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.turbo_stream
-    end
+    redirect_to @user
   end
 
   def destroy
     current_user.unfollow(@user)
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.turbo_stream
-    end
+    redirect_to @user
   end
 
   private
