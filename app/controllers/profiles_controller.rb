@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = @user.profile || @user.build_profile
+    @posts = @user.posts
   end
 
   def edit
@@ -14,7 +15,7 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       redirect_to user_profile_path(@user)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -25,6 +26,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:bio, :profile_picture)
+    params.expect(profile: [ :bio ])
   end
 end

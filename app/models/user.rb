@@ -11,23 +11,11 @@ class User < ApplicationRecord
 
 
   # Following
-  has_many :active_following, class_name: "Following", foreign_key: "follower_id", dependent: :destroy
-  has_many :followers, through: :active_following
+  has_many :active_followings, class_name: "Following", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_followings, source: :followed
 
-  has_many :passive_following, class_name: "Following", foreign_key: "followee_id", dependent: :destroy
-  has_many :followees, through: :passive_following
-
-  def follow(other_user)
-    following << other_user unless self == other_user
-  end
-
-  def unfollow(other_user)
-    following.delete(other_user)
-  end
-
-  def following?(other_user)
-    following.include?(other_user)
-  end
+  has_many :passive_followings, class_name: "Following", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_followings, source: :follower
 
 
   # Likes

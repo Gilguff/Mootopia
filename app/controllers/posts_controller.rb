@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to root_path
+      redirect_to
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path
+    redirect_to
+  end
+
+  def following_posts
+    following_users = current_user.following
+    @posts = Post.where(author: following_users).order(created_at: :desc)
   end
 
   private

@@ -1,13 +1,9 @@
-<%= form_with(model: [@user, @profile], local: true) do |form| %>
+<%= form_with model: @profile, local: true do |form| %>
   <div>
-    <%= form.label :bio %>
+    <%= form.label "Bio:" %><br />
     <%= form.text_area :bio, placeholder: "Yap Yap Yap" %>
-  </div>
-
+  </div><br />
   <div>
-    <%= form.label :profile_picture %>
-    <%= form.file_field :profile_picture %>
+    <%= form.submit "Save" %>
   </div>
-
-  <%= form.submit "Save" %>
 <% end %>

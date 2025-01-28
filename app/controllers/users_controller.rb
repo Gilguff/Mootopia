@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ follow unfollow ]
+  before_action :set_user, only: %i[ show follow unfollow ]
 
   def index
     @users = User.all
+  end
+
+  def show
+    @followers = @user.followers
+    @following = @user.following
   end
 
   def follow

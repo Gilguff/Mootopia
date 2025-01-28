@@ -20,11 +20,10 @@ Rails.application.routes.draw do
   # user
   resources :users do
     resource :profile, only: [ :show, :edit, :update ]
-    member do
-      post :follow
-      delete :unfollow
-    end
   end
+
+  resources :followings, only: [ :create, :destroy ]
+  get "following_posts", to: "posts#following_posts", as: "following_posts"
 
 
   # post
