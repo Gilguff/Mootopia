@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   # user
   resources :users do
     resource :profile, only: [ :show, :edit, :update ]
+
+    collection do
+      post :search
+    end
   end
 
   resources :followings, only: [ :create, :destroy ]

@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def following_posts
     following_users = current_user.following
-    @posts = Post.where(author: following_users).order(created_at: :desc)
+    @posts = Post.where(author: following_users).or(Post.where(author: current_user)).order(created_at: :desc)
   end
 
   private

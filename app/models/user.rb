@@ -34,6 +34,10 @@ class User < ApplicationRecord
     liked_posts.include?(post)
   end
 
+  def total_likes
+    posts.joins(:likings).count
+  end
+
   # Profile
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile

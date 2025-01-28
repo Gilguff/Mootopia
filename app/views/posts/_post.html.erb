@@ -1,4 +1,5 @@
 <div class="post" id="post-<%= post.id %>">
+  <%# image_tag(post.author.profile.profile_picture_url, alt: "#{post.author.username}'s profile picture", class: "profile-pic") %>
   <h2><%= link_to post.author.username, user_profile_path(post.author) %>: </h2>
   <p><%= post.body %></p>
   <div id="like-count-<%= post.id %>">

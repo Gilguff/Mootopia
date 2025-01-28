@@ -1,3 +1,10 @@
 <h1>Users</h1>
 
-<%= render @users %>
+<%= form_with url: search_users_path, method: :post do |form| %>
+  <%= form.search_field :username_search, oninput: "this.form.requiestSubmit()", placeholder: "Search Users" %>
+<% end %>
+
+<div id="search_results">
+  <%= render @users %>
+</div>
+
