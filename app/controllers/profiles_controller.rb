@@ -2,12 +2,12 @@ class ProfilesController < ApplicationController
   before_action :set_user
 
   def show
-    @profile = @user.profile || @user.build_profile
+    @profile = @user.profile || @user.create_profile
     @posts = @user.posts
   end
 
   def edit
-    @profile = @user.profile || @user.build_profile
+    @profile = @user.profile || @user.create_profile
   end
 
   def update

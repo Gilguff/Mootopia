@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post.author = current_user
 
     if @post.save
-      redirect_to
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to
+    redirect_to root_path
   end
 
   def following_posts

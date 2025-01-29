@@ -2,9 +2,15 @@
 
 <%= link_to "New Post", new_post_path %>
 
-<% if @posts.length > 0 %>
-  <%= render @posts %>
-<% else %>
-  <p>Aint shit here boss</p>
-<% end %>
+<div class="post-container">
+  <% if @posts.length > 0 %>
+    <div class="post">
+    <%= render @posts %>
+    </div>
+  <% else %>
+    <div class="post">
+    <p>Aint shit here boss</p>
+    </div>
+  <% end %>
+</div>
 

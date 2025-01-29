@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :followings, only: [ :create, :destroy ]
+  resources :followings, only: [ :create ] do
+    delete :destroy, on: :collection
+  end
   get "following_posts", to: "posts#following_posts", as: "following_posts"
 
 

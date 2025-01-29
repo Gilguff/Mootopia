@@ -1,0 +1,8 @@
+<% unless current_user == user %>
+  <% if current_user.following.include?(user) %>
+    <%= button_to 'Unfollow', followings_path(followed_id: user.id), method: :delete, remote: true, data: { turbo_stream: true } %>
+  <% else %>
+    <%= button_to 'Follow', followings_path(followed_id: user.id), method: :post, remote: true, data: { turbo_method: true } %>
+  <% end %>
+<% end %>
+

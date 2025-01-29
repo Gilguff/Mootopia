@@ -1,7 +1,13 @@
 <div class="post" id="post-<%= post.id %>">
-  <%# image_tag(post.author.profile.profile_picture_url, alt: "#{post.author.username}'s profile picture", class: "profile-pic") %>
-  <h2><%= link_to post.author.username, user_profile_path(post.author) %>: </h2>
-  <p><%= post.body %></p>
+  <div class="post-header">
+  <%= image_tag post.author.profile.profile_picture_url, class: "profile-pic" %>
+  <span class="username"><%= link_to post.author.username, user_profile_path(post.author) %>:</span>
+  </div>
+
+  <div class="post-body" >
+    <p><%= post.body %></p>
+  </div>
+
   <div id="like-count-<%= post.id %>">
     <%= render "posts/like_count", post: post %>
   </div>
@@ -21,10 +27,12 @@
   <h3>Comments</h3>
   <% post.comments.each do |comment| %>
     <%= render comment %>
-    <% if current_user == comment.author %>
-      <%= link_to "Edit", edit_post_comment_path(post, comment) %>
-      <%= button_to "Delete", post_comment_path(post, comment), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-    <% end %>
+    <div>
+      <% if current_user == comment.author %>
+        <%= link_to "Edit", edit_post_comment_path(post, comment) %>
+        <%= button_to "Delete", post_comment_path(post, comment), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+      <% end %>
+    </div>
   <% end %>
   <h3>Add a comment:</h3>
   <%= render "comments/form", post: post %>

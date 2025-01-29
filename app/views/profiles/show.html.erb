@@ -1,11 +1,6 @@
 <h1><%= @user.username %></h1>
 
-<% if @profile.profile_picture.attached? %>
-  <%= image_tag @profile.profile_picture %>
-<% else %>
-  <%= image_tag "default-profile.png" %>
-<% end %>
-
+<%= image_tag @profile.profile_picture_url, class: "profile-picture"  %>
 <p><%= @profile.bio.presence || "No Yapping To Be Seen Here." %></p>
 <p>Followers: <%= @user.followers.count %></p>
 <p>Following: <%= @user.following.count %></p>
@@ -16,4 +11,8 @@
   <%= link_to "New Post", new_post_path %>
 <% end %>
 
-<%= render @posts %>
+<div class="post-container">
+    <div class="post">
+    <%= render @posts %>
+    </div>
+</div>
