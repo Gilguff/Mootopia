@@ -39,6 +39,14 @@ class User < ApplicationRecord
   end
 
   # Profile
+  after_create :create_profile
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+
+  private
+
+  def create_profile
+    self.create_profile!(bio: "No Yapping to be seen here", profile_picture: "default-profile.png")
+  end
 end
