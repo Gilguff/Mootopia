@@ -83,6 +83,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
     database: mootopia_production
     username: mootopia
     password: <%= ENV["MOOTOPIA_DATABASE_PASSWORD"] %>
