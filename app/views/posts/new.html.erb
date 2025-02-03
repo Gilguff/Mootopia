@@ -1,16 +1,16 @@
-<p>New Post</p>
+<div class="new-post-title">
+  <h1>New Post<h1>
+</div>
 
-<%= form_with model: @post do |form| %>
-  <div>
-    <%= form.text_field :body %>
-  </div>
+<div class="new-post-container">
+  <%= form_with model: @post do |form| %>
+    <div class="new-post-body">
+      <%= form.textarea :body, :rows => "10", :cols => "50" %>
+      <br>
 
-  <div>
-    <%= form.submit "Post" %>
-  </div>
-<% end %>
+      <%= form.submit "Post" %>
+      <% end %>
 
-<br \>
-<div>
-  <%= link_to "Cancel", root_path %>
+      <%= link_to "Cancel", root_path %>
+    </div>
 </div>

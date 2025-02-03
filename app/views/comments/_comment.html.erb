@@ -1,2 +1,7 @@
-<%= image_tag comment.author.profile.profile_picture_url, class: "profile-pic" %>
-<span class="username"><%= link_to comment.author.username, user_profile_path(comment.author) %>:</span><%= comment.body %>
+<div class="comment">
+  <span class="comment-header">
+    <%= image_tag comment.author.profile.profile_picture_url, class: "profile-pic" %>
+    <span class="username"><%= link_to comment.author.username, user_profile_path(comment.author) %>:</span>
+  </span>
+  <span class="comment-body"><%= comment.body %></span>
+</div>

@@ -20,7 +20,6 @@
       <%= render "posts/like_button", post: post %>
     </div>
   <% end %>
-
 </div>
  
 <div>
@@ -29,6 +28,7 @@
     <%= render comment %>
     <div>
       <% if current_user == comment.author %>
+        <br />
         <%= link_to "Edit", edit_post_comment_path(post, comment) %>
         <%= button_to "Delete", post_comment_path(post, comment), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
       <% end %>

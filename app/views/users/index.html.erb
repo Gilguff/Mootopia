@@ -1,13 +1,12 @@
-<div class="user">
+<div class="search-bar">
   <h1>Users</h1>
-  <div class="search-bar">
   <%= form_with url: search_users_path, method: :post do |form| %>
     <%= form.search_field :username_search, oninput: "this.form.requiestSubmit()", placeholder: "Search Users" %>
   <% end %>
-  </div>
+</div>
+<br />
 
-  <div id="search_results", class="user">
-    <%= render @users %>
-  </div>
+<div id="search_results", class="user">
+  <%= render @users %>
 </div>
 

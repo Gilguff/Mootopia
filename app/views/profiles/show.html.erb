@@ -1,18 +1,25 @@
-<h1><%= @user.username %></h1>
+<span class="profile-username"><h1><%= @user.username %></h1></span>
 
-<%= image_tag @profile.profile_picture_url, class: "profile-picture"  %>
-<p><%= @profile.bio.presence || "No Yapping To Be Seen Here." %></p>
-<p>Followers: <%= @user.followers.count %></p>
-<p>Following: <%= @user.following.count %></p>
-<p>Total Likes: <%= @user.total_likes %></p>
+<div class="profile-container">
+  <%= image_tag @profile.profile_picture_url, class: "profile-picture"  %>
+  <div class="profile-text">
+    <div class="counts">
+      <p>Followers: <%= @user.followers.count %>
+      Following: <%= @user.following.count %>
+      Likes: <%= @user.total_likes %></p><br />
+    </div>
+    <div class="bio">
+      <%= @profile.bio.presence || "No Yapping To Be Seen Here." %>
+    </div>
+  </div>
+</div>
 
+<br />
 <% if current_user == @user %>
-  <%= link_to "Edit", edit_user_profile_path(@user) %><br />
-  <%= link_to "New Post", new_post_path %>
+  <span class="edit-profile"><%= link_to "Edit Profile", edit_user_profile_path(@user) %><br /></span>
 <% end %>
 
 <div class="post-container">
-    <div class="post">
-    <%= render @posts %>
-    </div>
+  <span class="profile-username"><h2><%= @user.username %>'s Posts</h2></span>
+  <%= render @posts %>
 </div>

@@ -1,18 +1,21 @@
-<%= form_with(model: [@user, @profile], local: true) do |form| %>
-  <div>
-    <%= form.label :bio %>
-    <%= form.text_area :bio %>
-  </div>
+<div class="new-post-title">
+  <h1>Edit Profile</h1>
+</div>
 
-  <div>
-    <%= form.label :profile_picture %>
-    <%= form.text_field :profile_picture, placeholder: "Enter an image URL" %>
-  </div>
+<div class="new-post-container">
+  <%= form_with model: [@user, @profile], local: true do |form| %>
+    <div class="new-post-body">
+      <%= form.label "Bio (max: 500):" %>
+      <%= form.textarea :bio, :rows => "10", :cols => "50" %>
+      <br />
 
-  <div>
-    <%= form.submit "Update Profile" %>
-  </div>
-<% end %>
+      <%= form.label "Profile Picture URL:" %>
+      <%= form.text_field :profile_picture, placeholder: "Enter an image URL", :size => "40" %>
+      <br />
 
-<br />
-<%= link_to "Cancel", user_profile_path(current_user) %>
+      <%= form.submit "Update" %>
+      <% end %>
+
+      <%= link_to "Cancel", user_profile_path(current_user) %>
+    </div>
+</div>

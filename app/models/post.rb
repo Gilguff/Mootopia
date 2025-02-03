@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: "User"
 
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 500 }
 
   # Likes
   has_many :likings, dependent: :destroy

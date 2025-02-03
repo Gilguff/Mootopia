@@ -1,11 +1,16 @@
-<%= form_with(model: [ @comment.post, @comment ], local: true ) do |form| %>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.textarea :body %>
-  </p>
-  <p>
-    <%= form.submit "Update" %>
-  </p>
-<% end %>
+<div class="new-post-title">
+  <h1>Edit Comment</h1>
+</div>
 
-<%= link_to "Cancel", root_path %>
+<div class="new-post-container">
+  <%= form_with model: [@comment.post, @comment ], local: true do |form| %>
+    <div class="new-post-body">
+      <%= form.textarea :body, :rows => "10", :cols => "50" %>
+      <br>
+
+      <%= form.submit "Update" %>
+      <% end %>
+
+      <%= link_to "Cancel", root_path %>
+    </div>
+</div>

@@ -1,12 +1,13 @@
-<h1>Following</h1>
+<div class="index-title">
+  <h1>Following</h1>
 
-<%= link_to "New Post", new_post_path %>
+  <%= link_to "New Post", new_post_path %>
+</div>
+<br>
 
 <div class="post-container">
   <% if @posts.length > 0 %>
-    <div class="post">
     <%= render @posts %>
-    </div>
   <% else %>
     <div class="post">
     <p>Aint shit here boss</p>
