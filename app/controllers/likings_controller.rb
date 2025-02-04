@@ -4,7 +4,7 @@ class LikingsController < ApplicationController
   def create
     current_user.likings.create!(post: @post)
     respond_to do |format|
-      format.html { redirect_to @post }
+      format.html { redirect_to root_path }
       format.turbo_stream
     end
   end
@@ -13,7 +13,7 @@ class LikingsController < ApplicationController
     liking = current_user.likings.find(params[:id])
     liking.destroy
     respond_to do |format|
-      format.html { redirect_to @post }
+      format.html { redirect_to root_path }
       format.turbo_stream
     end
   end

@@ -6,7 +6,7 @@ class FollowingsController < ApplicationController
     followed_user = User.find(params[:followed_id])
     current_user.following << followed_user
     respond_to do |format|
-      format.html { redirect_to user_path(followed_user) }
+      format.html { redirect_to users_path }
       format.turbo_stream
     end
   end
@@ -15,7 +15,7 @@ class FollowingsController < ApplicationController
     following = current_user.active_followings.find_by(followed_id: params[:followed_id])
     following.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(User.find(params[:followed_id])) }
+      format.html { redirect_to users_path }
       format.turbo_stream
     end
   end
