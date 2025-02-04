@@ -1,7 +1,7 @@
 <div class="post" id="post-<%= post.id %>">
   <div class="post-header">
   <%= image_tag post.author.profile.profile_picture_url, class: "profile-pic" %>
-  <span class="username"><%= link_to post.author.username, user_profile_path(post.author) %>:</span>
+  <span class="username"><%= link_to post.author.username, user_profile_path(post.author) %></span>
   </div>
 
   <div class="post-body" >
