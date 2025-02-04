@@ -30,7 +30,13 @@
         <%= link_to "Following", following_posts_path %>
         <%= link_to "Users", users_path %>
         <%= link_to "Profile", user_profile_path(current_user) %>
-        <span class="log-out"><%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false } %></span>
+        <span class="log-out">
+        <form action="<%= destroy_user_session_path %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <button type="submit">Log Out</button>
+        </form>
+        </span>
       <% end %>
     </nav>
 
