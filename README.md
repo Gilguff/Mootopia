@@ -2,8 +2,8 @@
 
 This is for the final project of [The Odin Project](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project).
 
-Live Demo:
-    https://mootopia-qjj2.onrender.com
+~~Live Demo:~~
+    ~~https://mootopia-qjj2.onrender.com~~
 
 ## Features
 
